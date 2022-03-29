@@ -8,7 +8,7 @@ const Pokedex = () => {
     return (
         <div>
             <h1>Pokedex</h1>
-            <p>Welcome {userName} those are the follow pokemons...</p>
+            <p>Welcome {userName} these are the follow pokemons...</p>
         </div>
     );
 };
