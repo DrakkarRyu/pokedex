@@ -45,7 +45,7 @@ const Pokedex = () => {
             </div>
             <form className='input-container' onSubmit={submit}>
                 <label htmlFor='pokemon-name'>Search by name</label>
-                <input type='text' id='pokemon-name' value={pokemonName} onChange={ e => setPokemonName(e.target.value)}/>
+                <input type='text' id='pokemon-name' value={pokemonName} onChange={ e => setPokemonName(e.target.value)} required/>
                 <button>Search</button>
             </form>
             <ul>
