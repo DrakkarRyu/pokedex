@@ -9,7 +9,7 @@ const Pokedex = () => {
     const userName = useSelector(state => state.userName);
     const [pokemons, setPokemons] = useState([]);
     const [pokemonName, setPokemonName] = useState("");
-    const [types, setTypes]=useState([])
+    const [types, setTypes] = useState([])
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,24 +19,24 @@ const Pokedex = () => {
             .then(res => setTypes(res.data.results))
     }, [])
 
-    const submit = e =>{
+    const submit = e => {
         e.preventDefault();
         navigate(`/Pokedex/${pokemonName}`);
     }
 
     const handleType = e => {
         axios.get(e.target.value)
-        .then(res => setPokemons(res.data.pokemon))
+            .then(res => setPokemons(res.data.pokemon))
     }
 
     const [page, setPage] = useState(1);
-    const cardsNumber=10;
+    const cardsNumber = 10;
     const lastIndex = page * cardsNumber;
-    const firstIndex = lastIndex-cardsNumber;
+    const firstIndex = lastIndex - cardsNumber;
     const pokemonPaginated = pokemons.slice(firstIndex, lastIndex);
-    const totalPages = Math.ceil(pokemons.length/cardsNumber);
+    const totalPages = Math.ceil(pokemons.length / cardsNumber);
     const pagesNumbers = [];
-    for(let i = 1; i <= totalPages; i++){
+    for (let i = 1; i <= totalPages; i++) {
         pagesNumbers.push(i)
     }
 
@@ -48,7 +48,7 @@ const Pokedex = () => {
                 <select onChange={handleType}>
                     <option value=''>Filter by pokemon type</option>
                     {
-                        types.map(type=>(
+                        types.map(type => (
                             <option key={type.url} value={type.url}>{type.name}</option>
                         ))
                     }
@@ -56,7 +56,7 @@ const Pokedex = () => {
             </div>
             <form className='input-container' onSubmit={submit}>
                 <label htmlFor='pokemon-name'>Search by name</label>
-                <input type='text' id='pokemon-name' value={pokemonName} onChange={ e => setPokemonName(e.target.value)} required/>
+                <input type='text' id='pokemon-name' value={pokemonName} onChange={e => setPokemonName(e.target.value)} required />
                 <button>Search</button>
             </form>
             <ul>
@@ -66,11 +66,11 @@ const Pokedex = () => {
                     ))
                 }
             </ul>
-            <button onClick={ () => setPage (page-1)} disabled = {page<=1}>Back</button>
-            <button onClick={ () => setPage (page+1)} disabled = {page>=totalPages}>Next</button>
+            <button onClick={() => setPage(page - 1)} disabled={page <= 1}>Back</button>
+            <button onClick={() => setPage(page + 1)} disabled={page >= totalPages}>Next</button>
             <div>
-                {pagesNumbers.map(page=>(
-                    <button onClick={ () => setPage(page)}>{page}</button>
+                {pagesNumbers.map(page => (
+                    <button onClick={() => setPage(page)} key={page}>{page}</button>
                 ))}
             </div>
         </div>
