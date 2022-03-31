@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import PokemonCard from './PokemonCard';
 
 const Pokedex = () => {
 
@@ -9,7 +9,7 @@ const Pokedex = () => {
     const [pokemons, setPokemons] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1126`)
             .then(res => setPokemons(res.data.results))
     }, [])
     console.log(pokemons)
@@ -21,12 +21,7 @@ const Pokedex = () => {
             <ul>
                 {
                     pokemons.map(pokemon => (
-                        <li key={pokemon.id}>
-                            <Link to={`/Pokedex/${pokemon.id}`}>
-                                {pokemon.name}
-                                <img src={pokemon.url} alt = '' />
-                            </Link>
-                        </li>
+                        <PokemonCard pokemonURL={pokemon.url} key={pokemon.url}/>
                     ))
                 }
             </ul>
