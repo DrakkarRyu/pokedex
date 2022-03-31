@@ -16,6 +16,8 @@ const PokemonCard = ( {pokemonURL} ) => {
             <Link to={`/Pokedex/${pokemon.id}`}>
                 {pokemon.name}
                 <img src={pokemon.sprites?.front_default} alt=''/>
+                <p>Type: {pokemon.types?.[0].type.name}</p>
+                <p>SubType: {pokemon.types?.[1]?.type.name}</p>
             </Link>
         </li>
     );
