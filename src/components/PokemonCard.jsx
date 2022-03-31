@@ -16,7 +16,7 @@ const PokemonCard = ( {pokemonURL} ) => {
         <li className='pokemonCard'>
             <Link to={`/Pokedex/${pokemon.id}`}>
                 <h2>{pokemon.name}</h2>
-                <img src={pokemon.sprites?.other?.dream_world.front_default} alt=''/>
+                <img src={pokemon.sprites?.other?.dream_world.front_default ? pokemon.sprites?.other?.dream_world.front_default : pokemon.sprites?.front_default} alt=''/>
             </Link>
         </li>
     );
