@@ -17,8 +17,8 @@ const PokemonInfo = () => {
             <h1>{pokemon.name}</h1>
             <img src={pokemon.sprites?.other?.dream_world.front_default ? pokemon.sprites?.other?.dream_world.front_default : pokemon.sprites?.front_default} alt=''/>
             <p>Type: {pokemon.types?.[0]?.type.name}, {pokemon.types?.[1]?.type.name}</p>
-            <p>Height: {pokemon.height}</p>
-            <p>Weight: {pokemon.weight}</p>
+            <p>Height: {(pokemon.height/0.10).toFixed(2)} cm</p>
+            <p>Weight: {(pokemon.weight*0.10).toFixed(2)} kg</p>
             <p>Abilities: {pokemon.abilities?.[0]?.ability.name}, {pokemon.abilities?.[1]?.ability.name}</p>
         </div>
     );
