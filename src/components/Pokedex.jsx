@@ -29,6 +29,17 @@ const Pokedex = () => {
         .then(res => setPokemons(res.data.pokemon))
     }
 
+    const [page, setPage] = useState(1);
+    const cardsNumber=10;
+    const lastIndex = page * cardsNumber;
+    const firstIndex = lastIndex-cardsNumber;
+    const pokemonPaginated = pokemons.slice(firstIndex, lastIndex);
+    const totalPages = Math.ceil(pokemons.length/cardsNumber);
+    const pagesNumbers = [];
+    for(let i = 1; i <= totalPages; i++){
+        pagesNumbers.push(i)
+    }
+
     return (
         <div>
             <h1>Pokedex</h1>
@@ -50,11 +61,18 @@ const Pokedex = () => {
             </form>
             <ul>
                 {
-                    pokemons.map(pokemon => (
+                    pokemonPaginated.map(pokemon => (
                         <PokemonCard pokemonURL={pokemon.url ? pokemon.url : pokemon.pokemon.url} key={pokemon.url ? pokemon.url : pokemon.pokemon.url} />
                     ))
                 }
             </ul>
+            <button onClick={ () => setPage (page-1)} disabled = {page<=1}>Back</button>
+            <button onClick={ () => setPage (page+1)} disabled = {page>=totalPages}>Next</button>
+            <div>
+                {pagesNumbers.map(page=>(
+                    <button onClick={ () => setPage(page)}>{page}</button>
+                ))}
+            </div>
         </div>
     );
 };
