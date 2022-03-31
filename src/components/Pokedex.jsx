@@ -66,7 +66,7 @@ const Pokedex = () => {
                     ))
                 }
             </ul>
-            <button onClick={() => setPage(page - 1)} disabled={page <= 1}>Back</button>
+            <button onClick={() => setPage(page - 1)} disabled={page <= 1}>Back</button> {page} / {totalPages}
             <button onClick={() => setPage(page + 1)} disabled={page >= totalPages}>Next</button>
             <div>
                 {pagesNumbers.map(page => (
