@@ -15,7 +15,7 @@ const PokemonInfo = () => {
     return (
         <div>
             <h1>{pokemon.name}</h1>
-            <img src={pokemon.sprites?.front_default} alt=''/>
+            <img src={pokemon.sprites?.other?.dream_world.front_default} alt=''/>
             <p>Type: {pokemon.types?.[0].type.name}, {pokemon.types?.[1]?.type.name}</p>
             <p>Height: {pokemon.height}</p>
             <p>Weight: {pokemon.weight}</p>
